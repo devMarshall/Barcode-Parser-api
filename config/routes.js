@@ -10,5 +10,17 @@
 
 module.exports.routes = {
 
+  'POST /user/signup': {
+    controller: 'UserController',
+    action: 'signup',
+  },
+  'POST /user/login': {
+    controller: 'UserController',
+    action: 'login',
+  },
+  'GET /user': {
+    controller: 'UserController',
+    action: 'read',
+  },
 
 };

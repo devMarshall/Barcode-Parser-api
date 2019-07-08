@@ -19,4 +19,10 @@ module.exports.policies = {
 
   // '*': true,
 
+
+  'UserController': {
+    'read': ['isAuthorized'], // We dont need authorization here, allowing public access
+    'login': true,
+    'signup': true,
+  }
 };
