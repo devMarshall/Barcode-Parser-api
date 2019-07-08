@@ -11,7 +11,11 @@ module.exports = {
   fetchRecordsOnUpdate: true,
 
   attributes: {
-    'name': {
+    'firstname': {
+      type: 'string',
+      required: true
+    },
+    'lastname': {
       type: 'string',
       required: true
     },
@@ -20,9 +24,9 @@ module.exports = {
       unique: true,
       required: true
     },
-    'remainingTime': {
-      type: 'number',
-      defaultsTo: 0,
+    'role': {
+      type: 'string',
+      required: true
     },
     'token': {
       type: 'string',
