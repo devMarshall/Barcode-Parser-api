@@ -9,22 +9,22 @@
  * https://sailsjs.com/config/bootstrap
  */
 
-module.exports.bootstrap = async function() {
+const _ = require('lodash');
+const Raven = require('raven');
+const ResponseHelper = require('@dsninjas/response');
 
-  // By convention, this is a good place to set up fake data during development.
-  //
-  // For example:
-  // ```
-  // // Set up fake development data (or if we already have some, avast)
-  // if (await User.count() > 0) {
-  //   return;
-  // }
-  //
-  // await User.createEach([
-  //   { emailAddress: 'ry@example.com', fullName: 'Ryan Dahl', },
-  //   { emailAddress: 'rachael@example.com', fullName: 'Rachael Shaw', },
-  //   // etc.
-  // ]);
-  // ```
-
+module.exports.bootstrap = async function (cb) {
+  global._ = _;
+  global.Raven = Raven;
+  process
+    .on('unhandledRejection', (reason, p) => {
+      console.error(reason, 'Unhandled Rejection at Promise', p);
+    })
+    .on('uncaughtException', (err) => {
+      console.error(err, 'Uncaught Exception thrown');
+      process.exit(1);
+    });
+  Raven.config(sails.config.settings.raven.configUrl).install();
+  global.responseHelper = new ResponseHelper(Raven);
+  cb();
 };

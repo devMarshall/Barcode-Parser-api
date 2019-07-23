@@ -7,10 +7,6 @@
 
 module.exports = {
   attributes: {
-    'tracking_number': {
-      type: 'string',
-      required: true
-    },
     'sender': {
       type: 'string',
       required: true
@@ -19,7 +15,11 @@ module.exports = {
       type: 'string',
       required: true
     },
-    'carier': {
+    'carrier': {
+      type: 'string',
+      required: true
+    },
+    'tracking_number': {
       type: 'string',
       required: true
     },

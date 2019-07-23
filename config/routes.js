@@ -23,4 +23,9 @@ module.exports.routes = {
     action: 'read',
   },
 
+  'POST /package': {
+    controller: 'PackageController',
+    action: 'create',
+  },
+
 };

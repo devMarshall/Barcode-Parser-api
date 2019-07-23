@@ -18,11 +18,12 @@ module.exports.policies = {
   ***************************************************************************/
 
   // '*': true,
-
-
   'UserController': {
-    'read': ['isAuthorized'], // We dont need authorization here, allowing public access
+    'read': ['isAuthorized'],
     'login': true,
     'signup': true,
+  },
+  'PackageController': {
+    'create': ['isAuthorized'],
   }
 };

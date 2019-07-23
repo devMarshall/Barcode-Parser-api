@@ -23,5 +23,10 @@ module.exports = {
   },
   sockets: {
     onlyAllowOrigins: [],
+  },
+  settings: {
+    raven: {
+      configUrl: process.env.RAVEN_CONFIG_URL,
+    }
   }
 };

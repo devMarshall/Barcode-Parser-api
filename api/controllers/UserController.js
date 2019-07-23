@@ -46,7 +46,7 @@ module.exports = {
       const isValid = await bcrypt.compare(password, user.password);
       if (isValid) {
         const token = jwtService.sign(user);
-        const _user = User.updateOne({ id: user.id }).set({ token });
+        const _user = await User.updateOne({ id: user.id }).set({ token });
         return res.json({ _user, token });
       }
       else { return res.forbidden({ err: 'Invalid password' }); }

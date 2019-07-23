@@ -12,5 +12,13 @@ module.exports = {
     rest: false
   },
 
+  async create(req, res) {
+    try {
+      return responseHelper.json(201, res, 'Package added successfully', req.body);
+    } catch (err) {
+      res.serverError(err);
+    }
+  },
+
 };
 
