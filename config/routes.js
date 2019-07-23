@@ -22,10 +22,13 @@ module.exports.routes = {
     controller: 'UserController',
     action: 'read',
   },
-
   'POST /package': {
     controller: 'PackageController',
     action: 'create',
+  },
+  'POST /carrier': {
+    controller: 'PackageController',
+    action: 'getPossibleCarriers',
   },
 
 };
