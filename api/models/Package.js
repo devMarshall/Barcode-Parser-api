@@ -7,6 +7,10 @@
 
 module.exports = {
   attributes: {
+    'carrier': {
+      type: 'string',
+      required: true
+    },
     'sender': {
       type: 'string',
       required: true
@@ -15,7 +19,7 @@ module.exports = {
       type: 'string',
       required: true
     },
-    'carrier': {
+    'service': {
       type: 'string',
       required: true
     },
@@ -24,6 +28,10 @@ module.exports = {
       required: true
     },
     'weight': {
+      type: 'string',
+      allowNull: true
+    },
+    'created_by': {
       type: 'string',
       required: true
     },

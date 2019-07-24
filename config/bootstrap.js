@@ -13,9 +13,11 @@ const _ = require('lodash');
 const Raven = require('raven');
 const ResponseHelper = require('@dsninjas/response');
 const { guessCarrier } = require('shipit');
+const axios = require('axios');
 
 module.exports.bootstrap = async function (cb) {
   global._ = _;
+  global.axios = axios;
   global.Raven = Raven;
   global.guessCarrier = guessCarrier;
   process

@@ -10,4 +10,10 @@ module.exports = {
     }
     return { possibleCarriers: [], trackID };
   },
+
+  async getDetails(trackID, possibleCarriers) {
+    const { data } = await axios.get(`http://shipit-api.herokuapp.com/api/carriers/${possibleCarriers[0]}/${trackID}`);
+    return data;
+  }
+
 };

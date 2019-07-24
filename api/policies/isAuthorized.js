@@ -12,15 +12,15 @@ module.exports = function (req, res, next) {
         token = credentials;
       }
     } else {
-      return res.json(401, { err: 'Format is Authorization: Bearer [token]' });
+      return responseHelper.json(401, res, 'Format is Authorization: Bearer [token]');
     }
   } else {
     //authorization header is not present
-    return res.json(401, { err: 'No Authorization header was found' });
+    return responseHelper.json(401, res, 'No authorization header was found.');
   }
   jwtService.verify(token, (err, decoded) => {
     if (err) {
-      return res.json(401, { err: 'Invalid token' });
+      return responseHelper.json(401, res, 'Invalid Authorization token');
     }
     req.user = decoded;
     next();
