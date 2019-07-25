@@ -24,7 +24,7 @@ module.exports = {
       const token = jwtService.sign(_user);
       const user = await User.updateOne({ id: _user.id }).set({ token });
       const payload = { user, token };
-      return responseHelper.json(201, res, 'Package added successfully', payload);
+      return responseHelper.json(201, res, 'User registered successfully', payload);
     } catch (err) {
       responseHelper.error(err);
     }
