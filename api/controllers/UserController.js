@@ -18,15 +18,15 @@ module.exports = {
       const { body: { email } } = req;
       const userExists = await User.findOne({ email });
       if (userExists) {
-        return res.json(400, { err: 'Email already taken' });
+        return responseHelper.json(401, res, 'Email already taken');
       }
       const _user = await User.create(req.body).fetch();
       const token = jwtService.sign(_user);
       const user = await User.updateOne({ id: _user.id }).set({ token });
       const payload = { user, token };
-      return res.json(payload);
+      return responseHelper.json(201, res, 'Package added successfully', payload);
     } catch (err) {
-      return res.serverError(err);
+      responseHelper.error(err);
     }
   },
 
@@ -41,27 +41,26 @@ module.exports = {
 
       const user = await User.findOne({ email });
       if (!user) {
-        return res.notFound({ err: 'Could not find email,' + email + ' sorry.' });
+        return responseHelper.json(404, res, 'Could not find email ' + email);
       }
       const isValid = await bcrypt.compare(password, user.password);
       if (isValid) {
         const token = jwtService.sign(user);
         const _user = await User.updateOne({ id: user.id }).set({ token });
-        return res.json({ _user, token });
+        return responseHelper.json(404, res, 'User logged in successfully', { user: _user, token });
       }
       else { return res.forbidden({ err: 'Invalid password' }); }
-
     } catch (err) {
-      return req.serverError(err);
+      responseHelper.error(err);
     }
   },
   async read(req, res) {
     try {
       const { user: { data: { id } } } = req;
       const user = await User.findOne({ id });
-      return res.json(user);
+      return responseHelper.json(200, res, 'User retreived successfully', user);
     } catch (err) {
-      res.serverError(err);
+      responseHelper.error(err);
     }
   },
 };
