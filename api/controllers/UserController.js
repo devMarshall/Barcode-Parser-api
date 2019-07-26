@@ -47,7 +47,7 @@ module.exports = {
       if (isValid) {
         const token = jwtService.sign(user);
         const _user = await User.updateOne({ id: user.id }).set({ token });
-        return responseHelper.json(404, res, 'User logged in successfully', { user: _user, token });
+        return responseHelper.json(200, res, 'User logged in successfully', { user: _user, token });
       }
       else { return res.forbidden({ err: 'Invalid password' }); }
     } catch (err) {
