@@ -28,5 +28,12 @@ module.exports = {
     raven: {
       configUrl: process.env.RAVEN_CONFIG_URL,
     }
+  },
+  security: {
+    cors: {
+      allRoutes: true,
+      allowOrigins: '*',
+      allowCredentials: false
+    },
   }
 };
