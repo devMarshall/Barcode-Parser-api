@@ -36,6 +36,7 @@ module.exports = {
       allowCredentials: true,
       allowRequestMethods: 'GET,PUT,POST,OPTIONS,HEAD',
       allowRequestHeaders: 'Authorization, content-type',
+      allowAnyOriginWithCredentialsUnsafe: true,
     },
   }
 };
