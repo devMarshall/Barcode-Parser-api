@@ -48,10 +48,13 @@ module.exports = {
 
   async list(req, res) {
     try {
-      const { per_page, page: _page } = req.query;
+      const { per_page, page: _page, start_date, end_date } = req.query;
       const perPage = per_page || 20;
       const page = _page || 1;
       const criteria = {};
+      if (start_date && end_date) criteria.createdAt = { '>=': new Date(start_date), '<=': new Date(end_date) };
+      if (start_date && !end_date) criteria.createdAt = { '>=': new Date(start_date) };
+      if (!start_date && end_date) criteria.createdAt = { '<=': new Date(end_date) };
       const skip = perPage * (page - 1);
       const records = await Package.find({ where: criteria, limit: perPage, skip });
       const count = await Package.count(criteria);
@@ -63,8 +66,9 @@ module.exports = {
         pageCount: Math.ceil(count / perPage),
         total: count,
       };
-      return responseHelper.json(200, res, 'Packages reterived successfully', records, meta);
+      return responseHelper.json(200, res, 'Packages retrieved successfully', records, meta);
     } catch (err) {
+      console.log(err);
       responseHelper.error(err);
     }
   },
