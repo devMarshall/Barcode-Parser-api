@@ -65,10 +65,11 @@ module.exports = {
         nextPage: (count - (skip + perPage)) > 0 ? page + 1 : false,
         pageCount: Math.ceil(count / perPage),
         total: count,
+        start_date: start_date || null,
+        end_date: end_date || null,
       };
       return responseHelper.json(200, res, 'Packages retrieved successfully', records, meta);
     } catch (err) {
-      console.log(err);
       responseHelper.error(err);
     }
   },
