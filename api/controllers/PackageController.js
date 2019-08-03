@@ -73,5 +73,15 @@ module.exports = {
       responseHelper.error(err);
     }
   },
+
+  async delete(req, res) {
+    try {
+      const { id } = req.params;
+      await Package.destroyOne({ id });
+      return responseHelper.json(203, res, 'Package deleted successfully');
+    } catch (err) {
+      responseHelper.error(err);
+    }
+  }
 };
 

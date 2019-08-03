@@ -35,4 +35,9 @@ module.exports.routes = {
     action: 'list',
   },
 
+  'DELETE /package/:id': {
+    controller: 'PackageController',
+    action: 'delete',
+  },
+
 };

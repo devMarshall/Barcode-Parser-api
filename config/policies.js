@@ -27,5 +27,6 @@ module.exports.policies = {
     'create': ['isAuthorized'],
     'list': ['isAuthorized'],
     'getPossibleCarriers': ['isAuthorized'],
+    'delete': ['isAuthorized'],
   }
 };
