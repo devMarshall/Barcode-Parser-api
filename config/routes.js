@@ -34,6 +34,10 @@ module.exports.routes = {
     controller: 'PackageController',
     action: 'manualCreate',
   },
+  'PATCH /package/:id': {
+    controller: 'PackageController',
+    action: 'update',
+  },
   'GET /package': {
     controller: 'PackageController',
     action: 'list',

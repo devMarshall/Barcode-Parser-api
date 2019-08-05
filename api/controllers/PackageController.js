@@ -59,6 +59,16 @@ module.exports = {
     }
   },
 
+  async update(req, res) {
+    try {
+      const { params: { id }, body } = req;
+      const package = await Package.updateOne({ id }).set({ ...body });
+      return responseHelper.json(201, res, 'Package updated successfully', package);
+    } catch (err) {
+      responseHelper.error(err);
+    }
+  },
+
   async list(req, res) {
     try {
       const { per_page, page: _page, start_date, end_date } = req.query;
