@@ -34,7 +34,7 @@ module.exports = {
       allRoutes: true,
       allowOrigins: '*',
       allowCredentials: true,
-      allowRequestMethods: 'GET,PUT,POST,OPTIONS,HEAD',
+      allowRequestMethods: 'GET,PUT,POST,OPTIONS,HEAD,DELETE',
       allowRequestHeaders: 'Authorization, content-type',
       allowAnyOriginWithCredentialsUnsafe: true,
     },
