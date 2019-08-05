@@ -35,6 +35,19 @@ module.exports = {
     }
   },
 
+  async manualCreate(req, res) {
+    try {
+      const { user: { data: { id } }, body } = req;
+      const package = await Package.create({
+        ...body,
+        created_by: id
+      }).fetch();
+      return responseHelper.json(201, res, 'Package added successfully', { package });
+    } catch (err) {
+      responseHelper.error(err);
+    }
+  },
+
   async getPossibleCarriers(req, res) {
     try {
       const { possibleCarriers, trackID } = TrackerService.getCarriers(req.body.trackID);

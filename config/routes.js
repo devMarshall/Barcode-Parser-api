@@ -30,11 +30,14 @@ module.exports.routes = {
     controller: 'PackageController',
     action: 'create',
   },
+  'POST /package/manual-create': {
+    controller: 'PackageController',
+    action: 'manualCreate',
+  },
   'GET /package': {
     controller: 'PackageController',
     action: 'list',
   },
-
   'DELETE /package/:id': {
     controller: 'PackageController',
     action: 'delete',

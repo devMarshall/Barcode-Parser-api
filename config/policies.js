@@ -25,6 +25,7 @@ module.exports.policies = {
   },
   'PackageController': {
     'create': ['isAuthorized'],
+    'manualCreate': ['isAuthorized'],
     'list': ['isAuthorized'],
     'getPossibleCarriers': ['isAuthorized'],
     'delete': ['isAuthorized'],
